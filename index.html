@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -196,6 +197,8 @@ main{max-width:680px}
 .tk::before{content:"";width:1px;height:8px;margin-bottom:3px;background:rgba(255,255,255,.28)}
 [dir=rtl] .tk{transform:translateX(50%)}
 @media (prefers-reduced-motion:reduce){.fire i{animation:none}}
+.hero .hrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero .mn{position:static;transform:translateX(-6px) scale(.95)}
 </style>
 </head>
 <body>
@@ -213,7 +216,7 @@ main{max-width:680px}
 
  <section class="card">
   <h2>Твой заработок</h2>
-  <div class="hero"><div class="mn" id="mn"></div><div class="s">Твой доход</div><div class="n" id="o-pay"></div><div class="s" id="o-sub"></div><div class="hd"><svg class="pie" viewBox="0 0 60 60" aria-hidden="true"><path id="pr1" class="pw"/><path id="pr2" class="pg"/></svg><span class="hdc" id="o-hc"></span></div><div class="hdl" id="o-hl"></div></div>
+  <div class="hero"><div class="hrow"><div class="s">Твой доход</div><div class="mn" id="mn"></div></div><div class="n" id="o-pay"></div><div class="s" id="o-sub"></div><div class="hd"><svg class="pie" viewBox="0 0 60 60" aria-hidden="true"><path id="pr1" class="pw"/><path id="pr2" class="pg"/></svg><span class="hdc" id="o-hc"></span></div><div class="hdl" id="o-hl"></div></div>
   <div class="calc">
    <div class="ctitle" id="ct1"></div>
    <div class="pw"><button class="chip" id="pm" type="button" aria-haspopup="listbox" aria-expanded="false"></button><div class="pl" id="pl" role="listbox" hidden></div></div>
@@ -315,7 +318,7 @@ function render(keep){
  $("o-sub").textContent=r.S===0?t.base:t.mark+rub(r.S);
  $("o-price").textContent=rub(price);$("o-base").textContent=rub(base);
  $("o-sur").textContent=rub(r.S);
- $("o-chk").textContent=pc(fr*100);$("o-hc").textContent=pc(fr*100);$("o-hl").textContent=($("o-hl").dataset.t||"")+" "+pc(fr*100);$("o-usd").textContent=rub(r.pay);
+ $("o-chk").textContent=pc(fr*100);$("o-hc").textContent=pc(fr*100);$("o-usd").textContent=rub(r.pay);
  pie(fr);
 }
 function star(cx,cy,r){var p=[];for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*0.382:r;p.push((cx+rr*Math.cos(a)).toFixed(2)+","+(cy+rr*Math.sin(a)).toFixed(2))}return '<polygon fill="#ffde00" points="'+p.join(" ")+'"/>'}
@@ -338,7 +341,7 @@ function setLang(l,save){
  document.title=t.title;
  q("#tt h1").textContent=t.title;q("#tt .lead").textContent=t.lead;
  q(".card:nth-of-type(1) h2").textContent=t.pk;q(".card:nth-of-type(2) h2").textContent=t.earn;
- q(".hero .s").textContent=t.inc;$("ct1").textContent=t.calc;$("sl1").textContent=t.sell;$("o-hl").dataset.t=t.shr;$("mn").textContent=t.minl;
+ q(".hero .s").textContent=t.inc;$("ct1").textContent=t.calc;$("sl1").textContent=t.sell;$("o-hl").textContent=t.shr;$("mn").textContent=t.minl;
  var ks=document.querySelectorAll(".kpi small"),kk=[t.k[4],t.k[0],t.k[1],t.k[2]];for(var i=0;i<ks.length;i++)ks[i].textContent=kk[i];
  q(".note").textContent=t.note;q(".ctl").textContent=t.ct;
  build();render();
