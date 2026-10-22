@@ -155,6 +155,13 @@ main{max-width:680px}
 .pk label::after{content:"";position:absolute;top:10px;inset-inline-end:10px;width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);transition:border-color .2s,background .2s,box-shadow .2s}
 .pk label:has(input:checked)::after{border-color:var(--g);background:radial-gradient(circle,var(--g) 0 4px,transparent 5px);box-shadow:0 0 10px rgba(61,255,154,.7)}
 .pk .t3:has(input:checked)::after{border-color:#f0c35a;background:radial-gradient(circle,#f0c35a 0 4px,transparent 5px);box-shadow:0 0 10px rgba(240,195,90,.7)}
+.chip{display:inline-block;margin:8px 0 2px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(160,150,255,.25);font-size:13px;font-weight:500;color:#dcd9f7}
+.sl{position:relative;margin-top:16px}
+.calc .sl input[type=range]{margin:8px 0}
+.tap{position:absolute;top:50%;margin-top:-22px;width:44px;height:44px;margin-inline-start:-22px;inset-inline-start:calc(18px + (100% - 36px)*var(--p,0));border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.5) 0 5px,rgba(255,255,255,.18) 6px);border:1.5px solid rgba(255,255,255,.55);pointer-events:none;z-index:2;opacity:0;animation:tap 3.4s ease-in-out infinite}
+.sl.used .tap{display:none}
+@keyframes tap{0%{opacity:0;scale:1.5;margin-inline-start:-22px}12%{opacity:.9;scale:1}24%{scale:.82}62%{opacity:.9;scale:.82;margin-inline-start:46px}76%{opacity:0;scale:1.3;margin-inline-start:46px}100%{opacity:0;margin-inline-start:-22px}}
+@media (prefers-reduced-motion:reduce){.tap{display:none}}
 </style>
 </head>
 <body>
@@ -175,9 +182,9 @@ main{max-width:680px}
   <div class="hero"><div class="mn" id="mn"></div><div class="s">Твой доход</div><div class="n" id="o-pay"></div><div class="s" id="o-sub"></div></div>
   <div class="calc">
    <div class="ctitle" id="ct1"></div>
-   <div class="csub" id="pm"></div>
-   <div class="sl"><input type="range" id="pr" step="50" aria-label="Price"><div class="hint"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M30 33C30 21 14 22 14 7M7.5 13.5L14 6.5l6.5 7"/></svg><span></span></div></div>
+   <div class="chip" id="pm"></div>
    <div class="sellrow"><label for="pn" id="sl1"></label><div class="inp"><span>$</span><input type="number" id="pn" step="10"></div></div>
+   <div class="sl" id="sl"><input type="range" id="pr" step="50" aria-label="Price"><span class="tap" aria-hidden="true"></span></div>
   </div>
   <div class="kpi">
    <div><small>Чек рекламодателя</small><b id="o-price"></b></div>
@@ -218,7 +225,19 @@ ja:{lead:"クライアントに売りたいパッケージを選ぶと、いく�
 fr:{lead:"Choisis le pack que tu veux vendre au client et vois combien tu peux gagner.",calc:"Pour combien vends-tu le pack ?",sell:"Si tu vends ce pack pour",minp:"prix minimum",minl:"minimum"}
 };
 for(var uk in U)for(var uj in U[uk])T[uk][uj]=U[uk][uj];
-var PK=[{d:"1 Reels + 1 Stories",p:670},{d:"1 Reels + 2 Stories",p:800},{d:"2 Reels + 2 Stories",p:930},{d:"2 Reels + 3 Stories",p:1000},{p:1600,f:1,i:0},{p:2000,f:1,i:1},{p:2930,f:1,i:2}];
+var V={
+ru:{chosen:"Ты выбрал пакет",mnp:"Минимум"},
+en:{chosen:"You chose package",mnp:"Minimum"},
+ar:{chosen:"اخترت الباقة",mnp:"الحد الأدنى"},
+zh:{chosen:"你选择了套餐",mnp:"最低"},
+vi:{chosen:"Bạn đã chọn gói",mnp:"Tối thiểu"},
+es:{chosen:"Elegiste el paquete",mnp:"Mínimo"},
+de:{chosen:"Du hast das Paket gewählt",mnp:"Minimum"},
+ja:{chosen:"選択したパッケージ",mnp:"最低"},
+fr:{chosen:"Tu as choisi le pack",mnp:"Minimum"}
+};
+for(var vk in V)for(var vj in V[vk])T[vk][vj]=V[vk][vj];
+var PK=[{d:"1 Reels + 1 Stories",p:670},{d:"1 Reels + 2 Stories",p:800},{d:"2 Reels + 2 Stories",p:930},{d:"2 Reels + 3 Stories",p:1000},{p:1600,f:1,i:0},{p:2000,f:1,i:1}];
 var MAXP=13300,cur=0,C={blogger:0.5,s0:0.5,smax:0.7,free:270,k:440};
 var $=function(i){return document.getElementById(i)},q=function(s){return document.querySelector(s)};
 var rub=function(v){return "$"+Math.round(v).toLocaleString("en-US")};
@@ -237,8 +256,8 @@ function render(){
  var t=T[L],base=PK[cur].p,price=+$("pn").value||base;
  if(price<base)price=base;
  $("pn").min=base;$("pr").min=base;$("pr").max=MAXP;
- $("pr").value=price;$("pm").textContent=(cur+1)+". "+t.n[cur]+" · "+t.minp+" "+rub(base);q(".hero").classList.toggle("atmin",price<=base);
- $("pr").style.setProperty("--pct",Math.min(100,(price-base)/(MAXP-base)*100)+"%");
+ $("pr").value=price;$("pm").textContent=t.chosen+" "+(cur+1)+". "+t.n[cur]+". "+t.mnp+" "+rub(base);q(".hero").classList.toggle("atmin",price<=base);
+ $("pr").style.setProperty("--pct",Math.min(100,(price-base)/(MAXP-base)*100)+"%");$("sl").style.setProperty("--p",Math.min(1,(price-base)/(MAXP-base)));
  var r=calc(price,base);
  $("o-pay").textContent=rub(r.pay);
  $("o-sub").textContent=r.S===0?t.base:t.mark+rub(r.S);
@@ -267,7 +286,7 @@ function setLang(l,save){
  document.title=t.title;
  q("#tt h1").textContent=t.title;q("#tt .lead").textContent=t.lead;
  q(".card:nth-of-type(1) h2").textContent=t.pk;q(".card:nth-of-type(2) h2").textContent=t.earn;
- q(".hero .s").textContent=t.inc;$("ct1").textContent=t.calc;$("sl1").textContent=t.sell;$("mn").textContent=t.minl;q(".hint span").textContent=t.hint;
+ q(".hero .s").textContent=t.inc;$("ct1").textContent=t.calc;$("sl1").textContent=t.sell;$("mn").textContent=t.minl;
  var ks=document.querySelectorAll(".kpi small");for(var i=0;i<ks.length;i++)ks[i].textContent=t.k[i];
  q(".note").textContent=t.note;q(".ctl").textContent=t.ct;
  build();render();
@@ -282,7 +301,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")toggle(false
 setTimeout(function(){lgb.classList.remove("hi")},6000);
 $("pn").oninput=render;
 $("pn").onchange=function(){if(+$("pn").value<PK[cur].p)$("pn").value=PK[cur].p;render()};
-$("pr").oninput=function(){$("pn").value=$("pr").value;render()};
+$("pr").oninput=function(){$("sl").classList.add("used");$("pn").value=$("pr").value;render()};
 $("pn").value=PK[0].p;
 setLang("ru");
 </script>
