@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -280,15 +279,14 @@ for(var xk in X)if(T[xk])T[xk].k[4]=X[xk];
 var S={ru:"Доля от чека",en:"Share of the payment",ar:"حصة من المبلغ",zh:"占付款比例",vi:"Tỷ lệ trên số tiền",es:"Parte del pago",de:"Anteil am Betrag",ja:"支払額に対する割合",fr:"Part du paiement"};
 for(var sk in S)if(T[sk])T[sk].shr=S[sk];
 var PK=[{d:"1 Reels + 1 Stories",p:670},{d:"1 Reels + 2 Stories",p:800},{d:"2 Reels + 2 Stories",p:930},{d:"2 Reels + 3 Stories",p:1000},{p:1600,f:1,i:0},{p:2000,f:1,i:1}];
-var cur=0,C={f0:0.25,f5:0.5,f10:0.8,r1:1.4};
+var cur=0,C={f0:0.25,fmax:0.5,r1:1.4};
 var $=function(i){return document.getElementById(i)},q=function(s){return document.querySelector(s)};
 var rub=function(v){return "$"+Math.round(v).toLocaleString("en-US")};
 var pc=function(v){var t=(Math.round(v*10)/10).toString();return (["ru","kk","ky","af","de","fr","vi"].indexOf(L)>-1?t.replace(".",","):t)+"%"};
 function calc(price,base){
  var r=price/base,S=Math.max(0,price-base),f;
  if(r<=C.r1)f=C.f0;
- else if(r<=5)f=C.f0+(C.f5-C.f0)*(r-C.r1)/(5-C.r1);
- else f=C.f5+(C.f10-C.f5)*Math.min(1,(r-5)/5);
+ else f=C.f0+(C.fmax-C.f0)*Math.min(1,(r-C.r1)/(10-C.r1));
  return{S:S,share:f,pay:price*f};
 }
 function arc(cx,cy,r,a0,a1){var x0=cx+r*Math.sin(a0),y0=cy-r*Math.cos(a0),x1=cx+r*Math.sin(a1),y1=cy-r*Math.cos(a1);return "M"+cx+" "+cy+"L"+x0.toFixed(2)+" "+y0.toFixed(2)+"A"+r+" "+r+" 0 "+((a1-a0)>Math.PI?1:0)+" 1 "+x1.toFixed(2)+" "+y1.toFixed(2)+"Z"}
