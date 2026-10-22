@@ -199,6 +199,13 @@ main{max-width:680px}
 @media (prefers-reduced-motion:reduce){.fire i{animation:none}}
 .hero .hrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .hero .mn{position:static;transform:translateX(-6px) scale(.95)}
+.hero .hrow{flex-wrap:nowrap}
+.hero .mn{white-space:nowrap;flex:none}
+#o-sub{display:block}
+#o-sub .subv{display:block;font-size:15px;font-weight:800;margin-top:2px}
+.hero .hrow{flex-wrap:nowrap;margin-inline-end:-112px;gap:8px}
+.hero .hrow .s{white-space:nowrap;flex:none}
+.hero .mn{padding:3px 9px;font-size:11px}
 </style>
 </head>
 <body>
@@ -239,52 +246,44 @@ main{max-width:680px}
 
 <script>
 var T={
-ru:{nm:"Русский",title:"Расчёт твоего заработка",lead:"Просто выбери пакет, который ты хочешь продать, и посчитай, сколько ты можешь с этого заработать.",pk:"Выбери пакет",earn:"Твой заработок",inc:"Твой доход",calc:"За сколько ты продаёшь пакет, $",hint:"перемещай, чтобы изменить значение",k:["Чек рекламодателя","Базовая цена пакета","Наценка сверх базы","Доля, оставшаяся после блогера","Твой доход от всего чека"],note:"Чем дороже ты продаёшь, тем больше процент наценки остаётся у тебя.",base:"Продажа по базовой цене",mark:"Наценка сверх базы: ",min:"мин. ",fp:"от ",fs:"",ct:"Связаться:",n:["Базовый","Стандарт","Расширенный","Максимум","Спецпроект","Месячный марафон","Индивидуальный / другое"],d:["4 блогера, один общий Reels, поток лидов","Упоминание минимум раз в 2 дня, лидогенерация","Reels у нескольких блогеров и стратегия"]},
-en:{nm:"English",title:"Your earnings calculator",lead:"Just pick the package you want to sell and see how much you can earn from it.",pk:"Choose a package",earn:"Your earnings",inc:"Your income",calc:"Price you sell the package for, $",hint:"drag to change the value",k:["Advertiser's payment","Package base price","Markup above base","Share left after the blogger","Your income from the whole payment"],note:"The higher you sell, the bigger the percentage of the markup you keep.",base:"Sold at the base price",mark:"Markup above base: ",min:"min. ",fp:"from ",fs:"",ct:"Contact us:",n:["Basic","Standard","Extended","Maximum","Special project","Monthly marathon","Custom / other"],d:["4 bloggers, one joint Reels, a stream of leads","Mentions at least every 2 days, lead generation","Reels with several bloggers plus a strategy"]},
-ar:{nm:"العربية",title:"حاسبة أرباحك",lead:"ما عليك سوى اختيار الباقة التي تريد بيعها، وستعرف كم يمكنك أن تربح منها.",pk:"اختر الباقة",earn:"أرباحك",inc:"دخلك",calc:"بكم تبيع الباقة، $",hint:"حرّك لتغيير القيمة",k:["مبلغ المعلن","السعر الأساسي للباقة","الزيادة فوق السعر الأساسي","الحصة المتبقية بعد المدوّن","دخلك من إجمالي المبلغ"],note:"كلما بعت بسعر أعلى، زادت نسبة الزيادة التي تحتفظ بها.",base:"بيع بالسعر الأساسي",mark:"الزيادة فوق الأساس: ",min:"الحد الأدنى ",fp:"من ",fs:"",ct:"تواصل معنا:",n:["أساسي","قياسي","موسّع","أقصى","مشروع خاص","ماراثون شهري","مخصص / أخرى"],d:["4 مدوّنين، ريلز مشترك واحد، تدفق عملاء محتملين","ذكر مرة كل يومين على الأقل، توليد عملاء محتملين","ريلز مع عدة مدوّنين واستراتيجية"]},
-zh:{nm:"中文",title:"你的收益计算",lead:"只需选择你想销售的套餐，就能算出你可以从中赚到多少。",pk:"选择套餐",earn:"你的收益",inc:"你的收入",calc:"你的套餐售价，$",hint:"拖动以更改数值",k:["广告主付款额","套餐基础价","超出基础价的加价","博主分成后的剩余份额","你占总付款的收入"],note:"售价越高，你保留的加价比例就越大。",base:"按基础价销售",mark:"超出基础价：",min:"最低 ",fp:"",fs:"起",ct:"联系我们：",n:["基础","标准","进阶","旗舰","特别项目","月度马拉松","定制 / 其他"],d:["4位博主联合发布一条Reels，带来持续线索","至少每2天提及一次，持续获客","多位博主Reels加定制策略"]},
-vi:{nm:"Tiếng Việt",title:"Tính thu nhập của bạn",lead:"Chỉ cần chọn gói bạn muốn bán và xem bạn có thể kiếm được bao nhiêu.",pk:"Chọn gói",earn:"Thu nhập của bạn",inc:"Bạn nhận được",calc:"Bạn bán gói với giá bao nhiêu, $",hint:"kéo để thay đổi giá trị",k:["Số tiền nhà quảng cáo trả","Giá gốc của gói","Phần tăng thêm trên giá gốc","Phần còn lại sau blogger","Thu nhập của bạn trên tổng số tiền"],note:"Bạn bán càng cao, phần trăm chênh lệch bạn giữ lại càng lớn.",base:"Bán theo giá gốc",mark:"Chênh lệch so với giá gốc: ",min:"tối thiểu ",fp:"từ ",fs:"",ct:"Liên hệ:",n:["Cơ bản","Tiêu chuẩn","Mở rộng","Tối đa","Dự án đặc biệt","Marathon theo tháng","Tùy chỉnh / khác"],d:["4 blogger, một Reels chung, dòng khách tiềm năng","Nhắc đến ít nhất mỗi 2 ngày, tạo khách tiềm năng","Reels từ nhiều blogger kèm chiến lược"]},
-es:{nm:"Español",title:"Calcula tus ganancias",lead:"Solo elige el paquete que quieres vender y calcula cuánto puedes ganar con él.",pk:"Elige un paquete",earn:"Tus ganancias",inc:"Tu ingreso",calc:"¿Por cuánto vendes el paquete?, $",hint:"mueve para cambiar el valor",k:["Pago del anunciante","Precio base del paquete","Margen sobre la base","Parte restante tras el blogger","Tu ingreso sobre el pago total"],note:"Cuanto más caro vendas, mayor es el porcentaje del margen que te quedas.",base:"Venta al precio base",mark:"Margen sobre la base: ",min:"mín. ",fp:"desde ",fs:"",ct:"Contacto:",n:["Básico","Estándar","Ampliado","Máximo","Proyecto especial","Maratón mensual","Personalizado / otro"],d:["4 bloggers, un Reels conjunto, flujo de leads","Menciones al menos cada 2 días, generación de leads","Reels con varios bloggers y una estrategia"]},
-de:{nm:"Deutsch",title:"Deine Verdienstberechnung",lead:"Wähle einfach das Paket, das du verkaufen willst, und sieh, wie viel du damit verdienen kannst.",pk:"Wähle ein Paket",earn:"Dein Verdienst",inc:"Dein Einkommen",calc:"Für wie viel verkaufst du das Paket, $",hint:"ziehen, um den Wert zu ändern",k:["Zahlung des Werbekunden","Basispreis des Pakets","Aufschlag über dem Basispreis","Anteil nach dem Blogger","Dein Einkommen vom gesamten Betrag"],note:"Je höher du verkaufst, desto größer ist der Anteil des Aufschlags, der bei dir bleibt.",base:"Verkauf zum Basispreis",mark:"Aufschlag über Basis: ",min:"min. ",fp:"ab ",fs:"",ct:"Kontakt:",n:["Basis","Standard","Erweitert","Maximum","Spezialprojekt","Monatsmarathon","Individuell / sonstiges"],d:["4 Blogger, ein gemeinsames Reels, Strom an Leads","Erwähnung mindestens alle 2 Tage, Lead-Generierung","Reels bei mehreren Bloggern plus Strategie"]},
-ja:{nm:"日本語",title:"あなたの収益計算",lead:"売りたいパッケージを選ぶだけで、いくら稼げるかがすぐ分かります。",pk:"パッケージを選択",earn:"あなたの収益",inc:"あなたの収入",calc:"パッケージの販売価格、$",hint:"ドラッグして値を変更",k:["広告主の支払額","パッケージの基本価格","基本価格を超える上乗せ","ブロガー分を除いた持ち分","総額に対するあなたの収入"],note:"高く売るほど、上乗せ分のうちあなたの取り分の割合が大きくなります。",base:"基本価格での販売",mark:"基本価格を超える上乗せ: ",min:"最低 ",fp:"",fs:"〜",ct:"お問い合わせ:",n:["ベーシック","スタンダード","拡張","マックス","スペシャルプロジェクト","月間マラソン","カスタム / その他"],d:["ブロガー4人による共同Reels1本、リードを獲得","最低2日に1回の紹介、リード獲得","複数ブロガーのReelsと戦略"]},
-fr:{nm:"Français",title:"Calcul de tes gains",lead:"Choisis simplement le pack que tu veux vendre et vois combien tu peux gagner.",pk:"Choisis un pack",earn:"Tes gains",inc:"Ton revenu",calc:"Pour combien vends-tu le pack, $",hint:"glisse pour changer la valeur",k:["Paiement de l'annonceur","Prix de base du pack","Majoration au-dessus de la base","Part restante après le blogueur","Ton revenu sur le paiement total"],note:"Plus tu vends cher, plus le pourcentage de la majoration qui te revient est élevé.",base:"Vente au prix de base",mark:"Majoration au-dessus de la base : ",min:"min. ",fp:"dès ",fs:"",ct:"Contact :",n:["Basique","Standard","Étendu","Maximum","Projet spécial","Marathon mensuel","Sur mesure / autre"],d:["4 blogueurs, un Reels commun, flux de leads","Mention au moins tous les 2 jours, génération de leads","Reels chez plusieurs blogueurs et stratégie"]}
+ru:{nm:"Русский",title:"Расчёт твоего заработка",lead:"Просто выбери пакет, который ты хочешь продать, и посчитай, сколько ты можешь с этого заработать.",pk:"Выбери пакет",earn:"Твой заработок",inc:"Твой доход",calc:"За сколько ты продаёшь пакет, $",hint:"перемещай, чтобы изменить значение",k:["Чек рекламодателя","Базовая цена пакета","Наценка сверх базы","Доля, оставшаяся после блогера","Твой доход от всего чека"],note:"Чем дороже ты продаёшь, тем больше процент наценки остаётся у тебя.",base:"Продажа по базовой цене",mark:"Наценка сверх базы: ",min:"мин. ",fp:"от ",fs:"",ct:"Связаться:",n:["Базовый","Стандарт","Расширенный","Максимум","Спецпроект","Месячный","Индивидуальный / другое"],d:["4 блогера, один общий Reels, поток лидов","Генерим лиды целый месяц","Reels у нескольких блогеров и стратегия"]},
+en:{nm:"English",title:"Your earnings calculator",lead:"Just pick the package you want to sell and see how much you can earn from it.",pk:"Choose a package",earn:"Your earnings",inc:"Your income",calc:"Price you sell the package for, $",hint:"drag to change the value",k:["Advertiser's payment","Package base price","Markup above base","Share left after the blogger","Your income from the whole payment"],note:"The higher you sell, the bigger the percentage of the markup you keep.",base:"Sold at the base price",mark:"Markup above base: ",min:"min. ",fp:"from ",fs:"",ct:"Contact us:",n:["Basic","Standard","Extended","Maximum","Special project","Monthly","Custom / other"],d:["4 bloggers, one joint Reels, a stream of leads","We generate leads for a whole month","Reels with several bloggers plus a strategy"]},
+vi:{nm:"Tiếng Việt",title:"Tính thu nhập của bạn",lead:"Chỉ cần chọn gói bạn muốn bán và xem bạn có thể kiếm được bao nhiêu.",pk:"Chọn gói",earn:"Thu nhập của bạn",inc:"Bạn nhận được",calc:"Bạn bán gói với giá bao nhiêu, $",hint:"kéo để thay đổi giá trị",k:["Số tiền nhà quảng cáo trả","Giá gốc của gói","Phần tăng thêm trên giá gốc","Phần còn lại sau blogger","Thu nhập của bạn trên tổng số tiền"],note:"Bạn bán càng cao, phần trăm chênh lệch bạn giữ lại càng lớn.",base:"Bán theo giá gốc",mark:"Chênh lệch so với giá gốc: ",min:"tối thiểu ",fp:"từ ",fs:"",ct:"Liên hệ:",n:["Cơ bản","Tiêu chuẩn","Mở rộng","Tối đa","Dự án đặc biệt","Theo tháng","Tùy chỉnh / khác"],d:["4 blogger, một Reels chung, dòng khách tiềm năng","Tạo khách tiềm năng suốt cả tháng","Reels từ nhiều blogger kèm chiến lược"]},
+de:{nm:"Deutsch",title:"Deine Verdienstberechnung",lead:"Wähle einfach das Paket, das du verkaufen willst, und sieh, wie viel du damit verdienen kannst.",pk:"Wähle ein Paket",earn:"Dein Verdienst",inc:"Dein Einkommen",calc:"Für wie viel verkaufst du das Paket, $",hint:"ziehen, um den Wert zu ändern",k:["Zahlung des Werbekunden","Basispreis des Pakets","Aufschlag über dem Basispreis","Anteil nach dem Blogger","Dein Einkommen vom gesamten Betrag"],note:"Je höher du verkaufst, desto größer ist der Anteil des Aufschlags, der bei dir bleibt.",base:"Verkauf zum Basispreis",mark:"Aufschlag über Basis: ",min:"min. ",fp:"ab ",fs:"",ct:"Kontakt:",n:["Basis","Standard","Erweitert","Maximum","Spezialprojekt","Monatlich","Individuell / sonstiges"],d:["4 Blogger, ein gemeinsames Reels, Strom an Leads","Wir generieren einen ganzen Monat lang Leads","Reels bei mehreren Bloggern plus Strategie"]},
+fr:{nm:"Français",title:"Calcul de tes gains",lead:"Choisis simplement le pack que tu veux vendre et vois combien tu peux gagner.",pk:"Choisis un pack",earn:"Tes gains",inc:"Ton revenu",calc:"Pour combien vends-tu le pack, $",hint:"glisse pour changer la valeur",k:["Paiement de l'annonceur","Prix de base du pack","Majoration au-dessus de la base","Part restante après le blogueur","Ton revenu sur le paiement total"],note:"Plus tu vends cher, plus le pourcentage de la majoration qui te revient est élevé.",base:"Vente au prix de base",mark:"Majoration au-dessus de la base : ",min:"min. ",fp:"dès ",fs:"",ct:"Contact :",n:["Basique","Standard","Étendu","Maximum","Projet spécial","Mensuel","Sur mesure / autre"],d:["4 blogueurs, un Reels commun, flux de leads","On génère des leads pendant tout un mois","Reels chez plusieurs blogueurs et stratégie"]},
+kk:{nm:"Қазақша",title:"Табысыңды есептеу",lead:"Клиентке сатқың келетін пакетті таңда да, одан қанша табуға болатынын есепте.",pk:"Пакетті таңда",earn:"Сенің табысың",inc:"Сенің кірісің",calc:"Пакетті қанша бағаға сатасың",sell:"Бұл пакетті мына бағаға сатсаң",shr:"Чектен үлес",minl:"минимум",k:["Жарнамашының чегі","Пакеттің базалық бағасы","Базадан жоғары баға","Блогерден кейін қалған үлес","Чектен кіріс"],note:"Қанша қымбат сатсаң, үстемеақының соғұрлым көп пайызы өзіңде қалады.",base:"Базалық бағамен сату",mark:"Базадан жоғары үстеме: ",min:"мин. ",fp:"",fs:" бастап",ct:"Байланысу:",n:["Базалық","Стандарт","Кеңейтілген","Максимум","Арнайы жоба","Айлық","Жеке / басқа"],d:["4 блогер, бір ортақ Reels, лид ағыны","Бір ай бойы лид жинаймыз","Бірнеше блогердегі Reels және стратегия"]},
+ky:{nm:"Кыргызча",title:"Кирешеңди эсептөө",lead:"Кардарга сатууну каалаган пакетти танда да, андан канча тапканыңды эсепте.",pk:"Пакетти танда",earn:"Сенин табышың",inc:"Сенин кирешең",calc:"Пакетти канчага сатасың",sell:"Бул пакетти ушул баага сатсаң",shr:"Чектен үлүш",minl:"минимум",k:["Жарнама берүүчүнүн чеги","Пакеттин базалык баасы","Базадан жогору баа","Блогерден кийин калган үлүш","Чектен киреше"],note:"Канчалык кымбат сатсаң, үстөктүн ошончолук көп пайызы сенде калат.",base:"Базалык баада сатуу",mark:"Базадан жогору үстөк: ",min:"мин. ",fp:"",fs:" баштап",ct:"Байланышуу:",n:["Базалык","Стандарт","Кеңейтилген","Максимум","Атайын долбоор","Айлык","Жеке / башка"],d:["4 блогер, бир жалпы Reels, лид агымы","Бир ай бою лид топтойбуз","Бир нече блогердеги Reels жана стратегия"]},
+af:{nm:"Afrikaans",title:"Bereken jou verdienste",lead:"Kies net die pakket wat jy aan die kliënt wil verkoop en bereken hoeveel jy daarmee kan verdien.",pk:"Kies 'n pakket",earn:"Jou verdienste",inc:"Jou inkomste",calc:"Teen watter prys verkoop jy die pakket",sell:"As jy hierdie pakket verkoop vir",shr:"Aandeel van die betaling",minl:"minimum",k:["Adverteerder se betaling","Pakket se basisprys","Prys bo basis","Aandeel oor ná die blogger","Inkomste uit betaling"],note:"Hoe duurder jy verkoop, hoe groter die persentasie van die opslag wat jy hou.",base:"Verkoop teen die basisprys",mark:"Opslag bo basis: ",min:"min. ",fp:"vanaf ",fs:"",ct:"Kontak ons:",n:["Basies","Standaard","Uitgebrei","Maksimum","Spesiale projek","Maandeliks","Pasgemaak / ander"],d:["4 bloggers, een gesamentlike Reels, vloei van leads","Ons genereer leads 'n hele maand lank","Reels by verskeie bloggers plus strategie"]},
+hi:{nm:"हिन्दी",title:"अपनी कमाई का हिसाब",lead:"बस वह पैकेज चुनो जो तुम क्लाइंट को बेचना चाहते हो, और देखो कि उससे तुम कितना कमा सकते हो।",pk:"पैकेज चुनो",earn:"तुम्हारी कमाई",inc:"तुम्हारी आय",calc:"तुम पैकेज कितने में बेचते हो",sell:"अगर यह पैकेज इस कीमत पर बेचो",shr:"चेक में हिस्सा",minl:"न्यूनतम",k:["विज्ञापनदाता का चेक","पैकेज की बेस कीमत","बेस से ऊपर की कीमत","ब्लॉगर के बाद बचा हिस्सा","चेक से आय"],note:"जितना महंगा बेचोगे, मार्कअप का उतना बड़ा प्रतिशत तुम्हारे पास रहेगा।",base:"बेस कीमत पर बिक्री",mark:"बेस से ऊपर मार्कअप: ",min:"न्यूनतम ",fp:"",fs:" से",ct:"संपर्क करें:",n:["बेसिक","स्टैंडर्ड","एक्सटेंडेड","मैक्सिमम","स्पेशल प्रोजेक्ट","मासिक","कस्टम / अन्य"],d:["4 ब्लॉगर, एक साझा Reels, लीड्स का प्रवाह","पूरे महीने लीड्स जनरेट करते हैं","कई ब्लॉगरों के साथ Reels और रणनीति"]}
 };
-var ORDER=["ru","en","ar","zh","vi","es","de","ja","fr"],L="ru";
+var ORDER=["ru","en","kk","ky","vi","de","fr","af","hi"],L="ru";
 var U={
 ru:{lead:"Выбери пакет, который хочешь продать клиенту, и посчитай, сколько ты можешь с этого заработать.",calc:"За сколько ты продаёшь пакет",sell:"Если продать этот пакет за",minp:"минимальная цена",minl:"минимум"},
 en:{lead:"Choose the package you want to sell to the client and see how much you can earn from it.",calc:"What price you sell the package for",sell:"If you sell this package for",minp:"minimum price",minl:"minimum"},
-ar:{lead:"اختر الباقة التي تريد بيعها للعميل، وستعرف كم يمكنك أن تربح منها.",calc:"بكم تبيع الباقة",sell:"إذا بعت هذه الباقة بمبلغ",minp:"الحد الأدنى للسعر",minl:"الحد الأدنى"},
-zh:{lead:"选择你想卖给客户的套餐，就能算出你可以从中赚到多少。",calc:"你的套餐售价",sell:"如果以此价格出售该套餐",minp:"最低价",minl:"最低收入"},
 vi:{lead:"Chọn gói bạn muốn bán cho khách và xem bạn có thể kiếm được bao nhiêu.",calc:"Bạn bán gói với giá bao nhiêu",sell:"Nếu bán gói này với giá",minp:"giá tối thiểu",minl:"tối thiểu"},
-es:{lead:"Elige el paquete que quieres vender al cliente y calcula cuánto puedes ganar con él.",calc:"¿Por cuánto vendes el paquete?",sell:"Si vendes este paquete por",minp:"precio mínimo",minl:"mínimo"},
 de:{lead:"Wähle das Paket, das du dem Kunden verkaufen willst, und sieh, wie viel du damit verdienen kannst.",calc:"Für wie viel verkaufst du das Paket",sell:"Wenn du dieses Paket verkaufst für",minp:"Mindestpreis",minl:"Minimum"},
-ja:{lead:"クライアントに売りたいパッケージを選ぶと、いくら稼げるかがすぐ分かります。",calc:"パッケージの販売価格",sell:"このパッケージを次の価格で売る場合",minp:"最低価格",minl:"最低額"},
 fr:{lead:"Choisis le pack que tu veux vendre au client et vois combien tu peux gagner.",calc:"Pour combien vends-tu le pack ?",sell:"Si tu vends ce pack pour",minp:"prix minimum",minl:"minimum"}
 };
 for(var uk in U)for(var uj in U[uk])T[uk][uj]=U[uk][uj];
 var V={
 ru:{chosen:"Ты выбрал пакет",mnp:"Минимум"},
 en:{chosen:"You chose package",mnp:"Minimum"},
-ar:{chosen:"اخترت الباقة",mnp:"الحد الأدنى"},
-zh:{chosen:"你选择了套餐",mnp:"最低"},
 vi:{chosen:"Bạn đã chọn gói",mnp:"Tối thiểu"},
-es:{chosen:"Elegiste el paquete",mnp:"Mínimo"},
 de:{chosen:"Du hast das Paket gewählt",mnp:"Minimum"},
-ja:{chosen:"選択したパッケージ",mnp:"最低"},
 fr:{chosen:"Tu as choisi le pack",mnp:"Minimum"}
 };
 for(var vk in V)for(var vj in V[vk])T[vk][vj]=V[vk][vj];
 var W={ru:"Цена сверх базы",en:"Price above base",ar:"السعر فوق الأساس",zh:"超出基础价的部分",vi:"Giá vượt giá gốc",es:"Precio sobre la base",de:"Preis über Basis",ja:"基本価格を超える金額",fr:"Prix au-dessus de la base"};
-for(var wk in W)T[wk].k[2]=W[wk];
+for(var wk in W)if(T[wk])T[wk].k[2]=W[wk];
 var X={ru:"Доход от чека",en:"Income from the payment",ar:"الدخل من المبلغ",zh:"来自付款的收入",vi:"Thu nhập từ số tiền",es:"Ingreso del pago",de:"Einkommen vom Betrag",ja:"支払額からの収入",fr:"Revenu du paiement"};
-for(var xk in X)T[xk].k[4]=X[xk];
+for(var xk in X)if(T[xk])T[xk].k[4]=X[xk];
 var S={ru:"Доля от чека",en:"Share of the payment",ar:"حصة من المبلغ",zh:"占付款比例",vi:"Tỷ lệ trên số tiền",es:"Parte del pago",de:"Anteil am Betrag",ja:"支払額に対する割合",fr:"Part du paiement"};
-for(var sk in S)T[sk].shr=S[sk];
+for(var sk in S)if(T[sk])T[sk].shr=S[sk];
 var PK=[{d:"1 Reels + 1 Stories",p:670},{d:"1 Reels + 2 Stories",p:800},{d:"2 Reels + 2 Stories",p:930},{d:"2 Reels + 3 Stories",p:1000},{p:1600,f:1,i:0},{p:2000,f:1,i:1}];
 var cur=0,C={f0:0.25,f5:0.5,f10:0.8,r1:1.4};
 var $=function(i){return document.getElementById(i)},q=function(s){return document.querySelector(s)};
 var rub=function(v){return "$"+Math.round(v).toLocaleString("en-US")};
-var pc=function(v){var t=(Math.round(v*10)/10).toString();return (["ru","es","de","fr","vi"].indexOf(L)>-1?t.replace(".",","):t)+"%"};
+var pc=function(v){var t=(Math.round(v*10)/10).toString();return (["ru","kk","ky","af","de","fr","vi"].indexOf(L)>-1?t.replace(".",","):t)+"%"};
 function calc(price,base){
  var r=price/base,S=Math.max(0,price-base),f;
  if(r<=C.r1)f=C.f0;
@@ -304,6 +303,9 @@ function build(){
 }
 function mOf(f){if(f<=0.5)return 1+3*f;var u=(f-0.5)*2;return 2.5+1.5*u+6*u*u}
 function fOf(r){if(r<=2.5)return Math.max(0,(r-1)/3);var u=(Math.sqrt(2.25+24*(r-2.5))-1.5)/12;return Math.min(1,0.5+u/2)}
+var subMode=null,subTm=null;
+function subHtml(S,t){return S===0?t.base:t.mark.trim()+'<span class="subv">'+rub(S)+'</span>'}
+function setSub(S,t){$("o-sub").innerHTML=subHtml(S,t)}
 function render(keep){
  var t=T[L],base=PK[cur].p,max=base*10,price=+$("pn").value||base;
  if(price<base)price=base;if(price>max)price=max;
@@ -315,7 +317,7 @@ function render(keep){
  $("pr").style.setProperty("--pct",(f*100)+"%");$("sl").style.setProperty("--p",f);$("sl").style.setProperty("--w",Math.max(0,(f-0.5)*2).toFixed(3));
  var r=calc(price,base),fr=r.pay/price;
  $("o-pay").textContent=rub(r.pay);
- $("o-sub").textContent=r.S===0?t.base:t.mark+rub(r.S);
+ setSub(r.S,t);
  $("o-price").textContent=rub(price);$("o-base").textContent=rub(base);
  $("o-sur").textContent=rub(r.S);
  $("o-chk").textContent=pc(fr*100);$("o-hc").textContent=pc(fr*100);$("o-usd").textContent=rub(r.pay);
@@ -325,13 +327,13 @@ function star(cx,cy,r){var p=[];for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI
 var FL={
 ru:'<rect width="30" height="20" fill="#fff"/><rect y="6.67" width="30" height="6.67" fill="#0039a6"/><rect y="13.33" width="30" height="6.67" fill="#d52b1e"/>',
 en:'<rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.3"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#c8102e" stroke-width="3.4"/>',
-ar:'<rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#00732f"/><rect y="13.33" width="30" height="6.67" fill="#111"/><rect width="7.5" height="20" fill="#e4002b"/>',
-zh:'<rect width="30" height="20" fill="#de2910"/>'+star(6,6,3.4)+star(11.5,2.4,1)+star(13.5,4.6,1)+star(13.5,7.6,1)+star(11.5,9.8,1),
 vi:'<rect width="30" height="20" fill="#da251d"/>'+star(15,10.6,6.2),
-es:'<rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/>',
 de:'<rect width="30" height="20" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#dd0000"/><rect y="13.33" width="30" height="6.67" fill="#ffce00"/>',
-ja:'<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#bc002d"/>',
-fr:'<rect width="30" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055a4"/><rect x="20" width="10" height="20" fill="#ef4135"/>'
+fr:'<rect width="30" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055a4"/><rect x="20" width="10" height="20" fill="#ef4135"/>',
+kk:'<rect width="30" height="20" fill="#00afca"/><circle cx="15" cy="9" r="3.6" fill="#fec50c"/><path d="M6 16.5h18" stroke="#fec50c" stroke-width="1.4"/>',
+ky:'<rect width="30" height="20" fill="#e8112d"/><circle cx="15" cy="10" r="5.2" fill="#ffef00"/><circle cx="15" cy="10" r="3" fill="#e8112d"/>',
+af:'<rect width="30" height="10" fill="#e03c31"/><rect y="10" width="30" height="10" fill="#001489"/><path d="M0 0L13 10L0 20M13 10H30" fill="none" stroke="#fff" stroke-width="5.5"/><path d="M0 0L13 10L0 20M13 10H30" fill="none" stroke="#007749" stroke-width="3"/><path d="M0 1.5L9.5 10L0 18.5Z" fill="#ffb81c"/><path d="M0 3.6L7.2 10L0 16.4Z" fill="#000"/>',
+hi:'<rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#ff9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".8"/>'
 };
 function flag(l,sq){return '<svg viewBox="0 0 30 20"'+(sq?' preserveAspectRatio="xMidYMid slice"':'')+' aria-hidden="true">'+FL[l]+'</svg>'}
 function setLang(l,save){
